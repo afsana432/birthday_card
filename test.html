@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      font-family: 'Pacifico', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .page {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: opacity 1s ease;
+      padding: 20px;
+    }
+
+    .page.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .message {
+      font-size: 4rem;
+      color: #ff99cc;
+      text-shadow: 0 0 12px #ff99cc, 0 0 24px #ff33cc;
+      animation: fadeIn 2s ease-out forwards;
+      opacity: 0;
+    }
+
+    .subtext {
+      font-size: 1.8rem;
+      color: #ccf2ff;
+      margin-top: 20px;
+      text-shadow: 0 0 10px #66ffff;
+      animation: fadeIn 3s ease-out 1s forwards;
+      opacity: 0;
+    }
+
+    .balloons {
+      position: absolute;
+      bottom: -150px;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .balloon {
+      width: 60px;
+      height: 80px;
+      background: radial-gradient(circle at 30% 30%, #ff69b4, #c71585);
+      border-radius: 50%;
+      position: absolute;
+      bottom: -100px;
+      animation: float 10s infinite ease-in;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: #fff;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); opacity: 1; }
+      50% { transform: translateY(-60vh) translateX(20px); }
+      100% { transform: translateY(-120vh) translateX(50px); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .card {
+      display: flex;
+      flex-direction: row;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+      padding: 30px;
+      gap: 40px;
+      max-width: 95vw;
+      flex-wrap: wrap;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .side {
+      flex: 1 1 300px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .side h2 {
+      font-size: 2.2rem;
+      color: #ffccff;
+      text-shadow: 0 0 10px #ff33cc;
+    }
+
+    .side p {
+      font-size: 1.3rem;
+      color: #fefefe;
+      font-family: sans-serif;
+      margin-top: 10px;
+    }
+
+   
+
+.cake {
+  margin-top: 30px;
+  width: 160px;
+  height: 160px;
+  background: linear-gradient(to top, #ff99cc, #ffcce6);
+  border-radius: 20px 20px 10px 10px;
+  position: relative;
+  margin-inline: auto;
+  box-shadow: 0 0 20px #ff99cc;
+  overflow: visible;
+}
+
+.cake::before {
+  content: '';
+  position: absolute;
+  top: -25px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: #fff0f5;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.6);
+  z-index: 1;
+}
+
+/* Drip shapes */
+.cake .drip {
+  position: absolute;
+  width: 20px;
+  height: 40px;
+  background: #fff0f5;
+  border-radius: 10px 10px 10px 10px;
+  z-index: 0;
+  box-shadow: 0 0 6px rgba(255, 182, 193, 0.4);
+}
+
+.cake .drip:nth-child(1) {
+  left: 20px;
+  top: -5px;
+  height: 30px;
+}
+
+.cake .drip:nth-child(2) {
+  left: 60px;
+  top: 0px;
+  height: 35px;
+}
+
+.cake .drip:nth-child(3) {
+  left: 100px;
+  top: -3px;
+  height: 28px;
+}
+
+
+
+    .candle {
+      width: 12px;
+      height: 40px;
+      background: #fff;
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 4px;
+    }
+
+    .flame {
+      width: 16px;
+      height: 16px;
+      background: radial-gradient(circle, yellow 30%, orange 70%);
+      border-radius: 50%;
+      position: absolute;
+      top: -16px;
+      left: -2px;
+      box-shadow: 0 0 20px yellow, 0 0 40px orange;
+      animation: flicker 0.2s infinite alternate;
+    }
+
+    @keyframes flicker {
+      from { transform: scale(1) rotate(0deg); opacity: 1; }
+      to { transform: scale(1.3) rotate(5deg); opacity: 0.9; }
+    }
+
+    .button {
+      margin-top: 40px;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      background: #ff33cc;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #ff33cc;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .button:hover {
+      background: #ff66d9;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .message {
+        font-size: 2.5rem;
+      }
+
+      .subtext {
+        font-size: 1.2rem;
+      }
+
+      .cake {
+        width: 120px;
+        height: 120px;
+      }
+
+      .candle {
+        height: 30px;
+      }
+
+      .flame {
+        width: 12px;
+        height: 12px;
+      }
+    }
+    #fireworks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+  </style>
+</head>
+<body>
+  <div id="page1" class="page">
+    <div class="message">Happy Birthday!</div>
+    <div class="subtext">Wishing you a day filled with love, joy, and surprises! 🎉</div>
+    <div class="balloons">
+      <div class="balloon" style="left: 20%; animation-delay: 0s;"></div>
+      <div class="balloon" style="left: 40%; animation-delay: 2s;"></div>
+      <div class="balloon" style="left: 60%; animation-delay: 4s;"></div>
+      <div class="balloon" style="left: 80%; animation-delay: 1s;"></div>
+    </div>
+    <button class="button" onclick="nextSlide()">Open Card 🎂</button>
+  </div>
+  <canvas id="fireworks"></canvas>
+
+
+  <div id="page2" class="page hidden">
+    <div class="card">
+     <div class="side">
+        <h2>Make a wish!</h2>
+        <div class="cake">
+        <div class="candle">
+            <div class="flame"></div>
+        </div>
+        <div class="drip"></div>
+        <div class="drip"></div>
+        <div class="drip"></div>
+        </div>
+     </div>
+      <div class="side">
+        <h2>Congratulations on turning 20! 🎉</h2>
+        <p>You've grown, you've glowed, and the journey's just begun.<br>Here's to the amazing chapter ahead!</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function nextSlide() {
+      document.getElementById('page1').classList.add('hidden');
+      document.getElementById('page2').classList.remove('hidden');
+    }
+    
+    
+        const canvas = document.getElementById("fireworks");
+        const ctx = canvas.getContext("2d");
+        let fireworks = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+
+        class Firework {
+            constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = canvas.height;
+            this.targetY = Math.random() * canvas.height / 2;
+            this.speed = 4 + Math.random() * 2;
+            this.exploded = false;
+            this.particles = [];
+            this.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+            }
+
+            update() {
+            if (!this.exploded) {
+                this.y -= this.speed;
+                if (this.y <= this.targetY) {
+                this.exploded = true;
+                for (let i = 0; i < 50; i++) {
+                    this.particles.push(new Particle(this.x, this.y, this.color));
+                }
+                }
+            } else {
+                this.particles.forEach(p => p.update());
+                this.particles = this.particles.filter(p => p.alpha > 0);
+            }
+            }
+
+            draw() {
+            if (!this.exploded) {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            } else {
+                this.particles.forEach(p => p.draw());
+            }
+            }
+
+            isDone() {
+            return this.exploded && this.particles.length === 0;
+            }
+        }
+
+        class Particle {
+            constructor(x, y, color) {
+            this.x = x;
+            this.y = y;
+            this.speedX = (Math.random() - 0.5) * 6;
+            this.speedY = (Math.random() - 0.5) * 6;
+            this.gravity = 0.05;
+            this.alpha = 1;
+            this.color = color;
+            }
+
+            update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            this.speedY += this.gravity;
+            this.alpha -= 0.01;
+            }
+
+            draw() {
+            ctx.globalAlpha = this.alpha;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            }
+        }
+
+        function animateFireworks() {
+            requestAnimationFrame(animateFireworks);
+            ctx.fillStyle = "rgba(0, 0, 0, 0.15)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            if (Math.random() < 0.05) {
+            fireworks.push(new Firework());
+            }
+            fireworks.forEach(f => {
+            f.update();
+            f.draw();
+            });
+            fireworks = fireworks.filter(f => !f.isDone());
+        }
+
+        // Only run fireworks after page2 is shown
+        const observer = new MutationObserver(() => {
+            const visible = !document.getElementById("page2").classList.contains("hidden");
+            if (visible) animateFireworks();
+        });
+
+        observer.observe(document.getElementById("page2"), { attributes: true, attributeFilter: ['class'] });
+
+    function nextSlide() {
+    // Play sound
+    const sound = document.getElementById("clickSound");
+    if (sound) sound.play();
+
+    // Switch slides
+    document.getElementById('page1').classList.add('hidden');
+    document.getElementById('page2').classList.remove('hidden');
+  }
+
+
+
+  </script>
+  <audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
+
+</body>
+</html>
